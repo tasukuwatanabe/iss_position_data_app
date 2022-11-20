@@ -5,7 +5,6 @@ function App() {
     const [geocodeJp, setGeocodeJp] = useState({ lat: '', lon: '' });
 
     useEffect(() => {
-        console.log('called');
         fetch('http://api.open-notify.org/iss-now.json')
             .then((res) => res.json())
             .then((data) => {
@@ -14,8 +13,6 @@ function App() {
                 const mark = /^-/;
                 const isLatMinus = mark.exec(lat);
                 const isLonMinus = mark.exec(lon);
-
-                console.log(data);
 
                 setGeocodeJp({
                   lat: (isLatMinus ? '北緯' : '南緯') + ': ' + Math.abs(lat),
